@@ -87,6 +87,12 @@
       />
       <input id="uv-address" type="text" placeholder="Search the web freely" />
     </form>
+    
+    <!-- Add this quotes section below the search form -->
+    <div class="flex-center quotes-container" id="quotes-container" style="margin: 20px 0; cursor: pointer;">
+      <p id="random-quote" style="text-align: center; max-width: 80%; font-style: italic;"></p>
+    </div>
+    
     <div class="desc left-margin">
       <p id="uv-error"></p>
       <pre id="uv-error-code"></pre>
@@ -97,5 +103,35 @@
       </div>
     </footer>
     <iframe style="display: none;" id="uv-frame"></iframe>
+
+    <script>
+      // Add this script to handle the quotes functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fetch quotes from JSON file
+        fetch('quotes.json')
+          .then(response => response.json())
+          .then(data => {
+            const quotes = data.quotes;
+            const quoteElement = document.getElementById('random-quote');
+            const quotesContainer = document.getElementById('quotes-container');
+            
+            // Function to display random quote
+            function displayRandomQuote() {
+              const randomIndex = Math.floor(Math.random() * quotes.length);
+              quoteElement.textContent = quotes[randomIndex];
+            }
+            
+            // Display initial random quote
+            displayRandomQuote();
+            
+            // Change quote when clicked
+            quotesContainer.addEventListener('click', displayRandomQuote);
+          })
+          .catch(error => {
+            console.error('Error loading quotes:', error);
+            document.getElementById('random-quote').textContent = "Inspirational quotes would appear here if they could.";
+          });
+      });
+    </script>
   </body>
 </html>
