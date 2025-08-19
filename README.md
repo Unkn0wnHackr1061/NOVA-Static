@@ -2,7 +2,8 @@
 
 <h1 align="center">NOVA-Static</h1>
 
-Static files/assets used to spin up an Ultraviolet website.
+Static files/assets used to spin up a NOVA Proxy.
+(All credits go to Ultraviolet-Static and titaniumnetwork-dev)
 
 ## Install in [NOVA-Proxy](https://github.com/Unkn0wnHackr1061/NOVA-Proxy.git)
 
